@@ -49,7 +49,7 @@ module.exports = {
       // avalanche mainnet
       accounts: accounts,
       chainId: 43114,
-      url: urlOverride || "http://127.0.0.1:8549",
+      url: urlOverride || "https://api.avax.network/ext/bc/C/rpc",
     }
   },
 };

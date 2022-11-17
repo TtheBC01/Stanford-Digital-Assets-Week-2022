@@ -23,7 +23,7 @@ const dawContract = function () {
     if (hre.hardhatArguments.network == "local") {
       return "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     } else if (hre.hardhatArguments.network == "fuji") {
-      return "";
+      return "0x44876a6a050e9286AeE1EA0D62Ee19751cC1351f";
     } else if (hre.hardhatArguments.network == "avalanche") {
       return "";
     } else {
