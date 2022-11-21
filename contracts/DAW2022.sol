@@ -12,7 +12,7 @@ contract DAW2022 is ERC721, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Stanford Digital Assets Week 2022", "DAW2022") {}
+    constructor() ERC721("Stanford Digital Assets Week 2022", "SDAW2022") {}
 
     function _baseURI() internal pure override returns (string memory) {
         return "ipfs://";

@@ -24,8 +24,8 @@ describe("DAW2022", function () {
     it("Should set the name and symbol", async function () {
       const { daw2022 } = await loadFixture(deployDAW2022);
 
-      expect(await daw2022.name()).to.equal("Digital Assets Week 2022");
-      expect(await daw2022.symbol()).to.equal("DAW2022");
+      expect(await daw2022.name()).to.equal("Stanford Digital Assets Week 2022");
+      expect(await daw2022.symbol()).to.equal("SDAW2022");
     });
 
     it("Should set the right owner", async function () {
@@ -45,6 +45,18 @@ describe("DAW2022", function () {
       expect(await daw2022.safeMint(otherAccount.address, "QmDead")).to.emit(
         daw2022, "Transfer"
       ).withArgs(anyValue, anyValue, anyValue, anyValue);
+    });
+
+    it("Make sure the token URI is correct", async function () {
+      const { daw2022, owner, otherAccount } = await loadFixture(
+        deployDAW2022
+      );
+
+      await expect(daw2022.safeMint(otherAccount.address, "QmDead")).to.be.emit(
+        daw2022, "Transfer"
+      ).withArgs(anyValue, anyValue, anyValue);
+
+      expect(await daw2022.tokenURI(0)).to.equal("ipfs://QmDead");
     });
   });
 

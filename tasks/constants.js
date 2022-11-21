@@ -25,7 +25,7 @@ const dawContract = function () {
     } else if (hre.hardhatArguments.network == "fuji") {
       return "0x44876a6a050e9286AeE1EA0D62Ee19751cC1351f";
     } else if (hre.hardhatArguments.network == "avalanche") {
-      return "";
+      return "0x54A07173499D754dA686Aa85dE60514E76Af8fA5";
     } else {
       return "";
     }

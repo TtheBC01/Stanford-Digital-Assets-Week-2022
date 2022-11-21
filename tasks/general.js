@@ -1,3 +1,4 @@
+const { task } = require("hardhat/config.js");
 const {
     ERC721,
     dawContract,
@@ -15,6 +16,24 @@ task("accounts", "Prints the list of accounts for configured HD Wallet", async (
         hre.ethers.utils.formatEther(accountBalance),
       );
     }
+  });
+
+  task("contractDetails", "Prints details of the digital assets contract.")
+  .setAction(async (taskArgs) => {
+    const provider = await hre.ethers.provider;
+
+    const contractHandle = new hre.ethers.Contract(
+        dawContract(),
+        ERC721().abi,
+        provider,
+      );
+
+    const name = await contractHandle.name();
+    const symbol = await contractHandle.symbol();
+    const owner = await contractHandle.owner();
+    console.log("Name:", name);
+    console.log("Symbol:", symbol);
+    console.log("Owner:", owner)
   });
 
 task("contractBalance", "Prints the first account.")
@@ -61,7 +80,7 @@ task("safeMint", "Mint a token from NFT contract.")
     )
   });
 
-  task("tokenUri", "Get the token URI for the specified token.")
+task("tokenUri", "Get the token URI for the specified token.")
   .addParam("tokenid", "target token id")
   .setAction(async (taskArgs) => {
     const tokenid = taskArgs.tokenid;
